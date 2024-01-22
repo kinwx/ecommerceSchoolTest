@@ -5,8 +5,8 @@ export const StyledMain = styled.main`
     height: auto;
 
     margin: 0 auto;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    /* border-left: 1px solid black;
+    border-right: 1px solid black; */
 `
 
 export const StyledHeader = styled.header`
