@@ -45,8 +45,8 @@ export const ListButtons = styled.ul`
 export const ItemLink = styled.li`
     & a {
         text-decoration: none;
-        color: ${props => props.select ? 'black' : 'gray'};
-        font-weight: ${props => props.select ? 500 : 400 };
+        color: ${props => props.select};
+        font-weight: ${props => props.select == 'black' ? 500 : 400 };
     }
 `
 
@@ -94,4 +94,47 @@ export const SearchButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+// ==========
+export const FooterStyled = styled.footer`
+    height: auto;
+    background-color: black;
+    color: white;
+`
+
+export const FooterInside = styled.div`
+    width: 1024px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2em 2em 6em;
+
+    display: grid;
+    grid-template-columns: 8fr 1fr 1fr;
+    column-gap: .5em;
+`
+
+export const FooterDescription = styled.div`
+    padding-top: 2em;
+    font-weight: 300;
+    
+    & > span {
+        font-family: "Oswald", sans-serif;
+        font-weight: 600;
+        font-size: calc(10px + .9vmin);
+    }
+`
+export const FooterOptions = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & > strong {
+        margin-bottom: .8em;
+    }
+    & > a {
+        text-decoration: none;
+        color: white;
+        font-weight: 300;
+    }
 `

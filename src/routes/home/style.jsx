@@ -157,3 +157,159 @@ export const MenuIcons = styled.div`
         }
     }
 `
+
+// ===========
+export const PopularCollectionComponent = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(505px, 1fr));
+    column-gap: .5em;
+`
+
+export const ImageArea = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    & > img {
+        width: 400px;
+        aspect-ratio: 8/8;
+        object-fit: contain;
+    }
+`
+
+export const ProductData = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`
+
+export const Labels = styled.div`
+    pointer-events: none;
+`
+
+export const StarsAndQuantity = styled.div`
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+
+    & > p {
+        color: green;
+    }
+`
+
+export const Stars = styled.div`
+    display: flex;
+    align-items: center;
+    gap: .9em;
+
+    & > div {
+        color: yellow;
+        display: flex;
+        gap: .2em;
+    }
+    & > span {
+        font-weight: 500;
+    }
+`
+
+export const Price = styled.strong`
+    font-size: calc(10px + 2vmin);
+`
+
+export const BottomPosition = styled.div`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`
+
+export const ButtonArea = styled.div`
+    display: flex;
+    gap: 2em;
+`
+
+export const BtnAddBag = styled.button`
+    flex: 1;
+    background-color: black;
+    color: white;
+    padding: .8em 1em;
+    border: none;
+    cursor: pointer;
+`
+
+export const AreaBtnDetails = styled.div`
+    position: relative;
+    flex: 1;
+
+    & > button:nth-child(1){
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background-color: transparent;
+        color: black;
+        border: 1px solid black;
+        padding: .8em 1em;
+        font-size: calc(10px + .5vmin);
+        font-weight: 500;
+        cursor: pointer;
+    }
+    & > button:nth-child(2){
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(25%, -25%);
+        z-index: 2;
+
+        width: 2.4em;
+        height: 2.4em;
+        border-radius: 50%;
+        color: red;
+        background-color: white;
+        border: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+`
+
+export const CarouselLayout = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+export const VisualRes = styled.div`
+    display: flex;
+    gap: .3em;
+    height: .3em;
+`
+
+export const ResponseBar = styled.div`
+    background-color: ${props => props.color};
+    height: .3em;
+    width: 4em;
+    border-radius: .3em;
+`
+export const ArrowButtons = styled.div`
+    display: flex;
+    gap: .5em;
+
+    & > button {
+        border: 1px solid black;
+        background-color: transparent;
+        color: black;
+
+        padding: .2em 2em;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+`
