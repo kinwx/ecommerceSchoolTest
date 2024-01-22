@@ -7,11 +7,13 @@ import { Bag } from "./routes/bag";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Finished } from "./routes/finished";
+import { AllProducts } from "./routes/allProducts";
 
 export const DataContext = createContext(null);
 function App() {
   const [ values, setValues ] = useState([]);
   const [ bag, setBag ] = useState([]);
+  const [ atualRoute, setAtualRoute ] = useState('Home');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +22,7 @@ function App() {
             setValues(data);
         } catch (error) {
             console.error(error.message);
-        }
+        };
     };
 
     fetchData();
@@ -31,6 +33,8 @@ function App() {
       values,
       bag,
       setBag,
+      atualRoute,
+      setAtualRoute
     }}>
       <BrowserRouter>
         <Routes>
@@ -40,6 +44,7 @@ function App() {
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="bag" element={<Bag />} />
             <Route path="finished" element={<Finished />} />
+            <Route path="products/allproducts" element={<AllProducts />} />
           </Route>
         </Routes>
       </BrowserRouter>

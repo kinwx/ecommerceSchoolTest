@@ -4,14 +4,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Bag = () => {
-    const { bag, setBag } = useContext(DataContext);
+    const { bag, setBag, setAtualRoute } = useContext(DataContext);
+    useEffect(() => {
+        setAtualRoute('Bag')
+    }, []);
     if(bag.length < 1)
-        return(<span>A lista está vazia</span>)
+        return(
+            <span>A lista está vazia</span>
+        );
 
-    const [payKey, setPayKey] = useState(false)
+    const [openForm, setOpenForm] = useState(false)
     const [ data, setData ] = useState([]);
     useEffect(() => {
         console.log(data);
+        setAtualRoute('Bag')
     }, [data]);
 
     useEffect(() => {
@@ -24,7 +30,7 @@ export const Bag = () => {
 
     const setCount = (id, sinal) => {
         setData(prev => {
-            return prev.map( (item) => {
+            return prev.map((item) => {
                 if(id === item.id){
                     switch(sinal) {
                         case 1:
@@ -36,7 +42,6 @@ export const Bag = () => {
                             break
                     }
                 }
-
                 return item
             });
         });
@@ -53,10 +58,6 @@ export const Bag = () => {
 
             return [...newList];
         });
-    };
-
-    const toPay = () => {
-
     };
 
     const [ localData, setLocalData ] = useState({
@@ -89,7 +90,7 @@ export const Bag = () => {
     };
 
     return (
-        <section>
+        <div>
             <div>
                 <p>Bag ({data.length})</p>
                 {data.map((item, index) => 
@@ -127,9 +128,9 @@ export const Bag = () => {
                     <span>Total ({data.reduce((el, it) => el + it.count, 0)})</span>
                     <span>$ {data.reduce((el, item) => el + (item.count * item.price), 0)}</span>
                 </div>
-                <button onClick={() => setPayKey(prev => !prev)}>Proceder e Pagar</button>
+                <button onClick={() => setOpenForm(prev => !prev)}>Proceder e Pagar</button>
             </div>
-            { payKey &&
+            { openForm &&
                 <div>
                     <form onSubmit={finishedFunc}>
                         <div>
@@ -162,6 +163,6 @@ export const Bag = () => {
                     </form>
                 </div>
             }
-        </section>
+        </div>
     );
 };
