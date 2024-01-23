@@ -13,13 +13,13 @@ export const DataContext = createContext(null);
 function App() {
   const [ values, setValues ] = useState([]);
   const [ bag, setBag ] = useState([]);
-  const [ atualRoute, setAtualRoute ] = useState('Home');
+  const [ currentRoute, setCurrentRoute ] = useState('Home');
 
   useEffect(() => {
     const fetchData = async () => {
         try {
             const { data } = await axios.get('https://fakestoreapi.com/products');
-            setValues(data);
+            setValues([...data]);
         } catch (error) {
             console.error(error.message);
         };
@@ -33,8 +33,8 @@ function App() {
       values,
       bag,
       setBag,
-      atualRoute,
-      setAtualRoute
+      currentRoute,
+      setCurrentRoute
     }}>
       <BrowserRouter>
         <Routes>

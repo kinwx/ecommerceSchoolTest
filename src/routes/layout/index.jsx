@@ -1,29 +1,29 @@
 import { useContext, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { DataContext } from "../../App";
-import { FooterDescription, FooterInside, FooterOptions, FooterStyled, InputDiv, ItemLink, ListButtons, LogoutButton, NavButtons, NavTopBar, SearchButton, StyledHeader, StyledInput, StyledMain } from "./style";
+import { FooterDescription, FooterInside, FooterOptions, FooterStyled, InputDiv, ItemLink, ListButtons, LogoutButton, NavButtons, NavBar, SearchButton, HeaderStyled, StyledInput, MainStyled } from "./style";
 
 export const Layout = () => {
-    const { bag, atualRoute } = useContext(DataContext);
+    const { bag, currentRoute } = useContext(DataContext);
 
     return (
         <>
-            <StyledMain>
-                <StyledHeader>
-                    <NavTopBar>
+            <MainStyled>
+                <HeaderStyled>
+                    <NavBar>
                         <NavButtons>
                             <Link to="/">OUTSTER</Link>
                             <nav>
                                 <ListButtons>
-                                    <ItemLink select={atualRoute == 'Home' ? "black" : "gray"}><Link to="/">Home</Link></ItemLink>
-                                    <ItemLink select={atualRoute == 'Products' ? "black" : "gray"}><Link to="/products">Products</Link></ItemLink>
-                                    <ItemLink select={atualRoute == 'Wishlist' ? "black" : "gray"}><Link to="/wishlist">Wishlist</Link></ItemLink>
-                                    <ItemLink select={atualRoute == 'Bag' ? "black" : "gray"}><Link to="/bag">Bag {bag.length > 0 && <span>{bag.length > 99 ? '99+' : bag.length}</span>}</Link></ItemLink>
+                                    <ItemLink select={currentRoute == 'Home' ? "black" : "gray"}><Link to="/">Home</Link></ItemLink>
+                                    <ItemLink select={currentRoute == 'Products' ? "black" : "gray"}><Link to="/products">Products</Link></ItemLink>
+                                    <ItemLink select={currentRoute == 'Wishlist' ? "black" : "gray"}><Link to="/wishlist">Wishlist</Link></ItemLink>
+                                    <ItemLink select={currentRoute == 'Bag' ? "black" : "gray"}><Link to="/bag">Bag {bag.length > 0 && <span>{bag.length > 99 ? '99+' : bag.length}</span>}</Link></ItemLink>
                                 </ListButtons>
                             </nav>
                         </NavButtons>
                         <LogoutButton>Logout</LogoutButton>
-                    </NavTopBar>
+                    </NavBar>
                     <InputDiv>
                         <StyledInput type="text" placeholder="What are you looking for?"/>
                         <SearchButton onClick={() => console.log("Pesquisar")}>
@@ -32,9 +32,9 @@ export const Layout = () => {
                             </svg>
                         </SearchButton>
                     </InputDiv>
-                </StyledHeader>
+                </HeaderStyled>
                 <Outlet />
-            </StyledMain>
+            </MainStyled>
             <FooterStyled>
                 <FooterInside>
                     <FooterDescription>

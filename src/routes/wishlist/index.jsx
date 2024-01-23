@@ -2,10 +2,10 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../../App";
 
 export const Wishlist = () => {
-    const { setAtualRoute } = useContext(DataContext);
+    const { setCurrentRoute } = useContext(DataContext);
 
     useEffect(() => {
-        setAtualRoute('Wishlist')
+        setCurrentRoute('Wishlist');
     }, []);
     return (
         <h1>Wishlist</h1>      

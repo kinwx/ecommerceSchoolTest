@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const StyledMain = styled.main`
+// Header Navegation
+export const MainStyled = styled.main`
     width: 1024px;
     height: auto;
 
@@ -9,7 +10,7 @@ export const StyledMain = styled.main`
     border-right: 1px solid black; */
 `
 
-export const StyledHeader = styled.header`
+export const HeaderStyled = styled.header`
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -17,7 +18,7 @@ export const StyledHeader = styled.header`
     padding-top: 1.5em;
 `
 
-export const NavTopBar = styled.div`
+export const NavBar = styled.div`
     display: flex;
     justify-content: space-between;
 `
@@ -113,6 +114,7 @@ export const SearchButton = styled.button`
 `
 
 // ==========
+// Footer
 export const FooterStyled = styled.footer`
     height: auto;
     background-color: black;

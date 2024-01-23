@@ -1,99 +1,87 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
-import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonStyled, Buttons, CardOpinion, CarouselLayout, DivImageBackground, FakeButtonFeatures, FaqItem, FaqList, FeatureCard, ImageArea, Labels, LayoutCards, LayoutFeaturesCards, LinkStyled, MenuIcons, OpinionText, Overlay, PopularCollectionComponent, Price, ProductData, Profile, ProfileDescription, ResponseBar, SectionStyled, Stars, StarsAndQuantity, StrongProducts, Texts, TitleFeatures, TitleProducts, VisualRes } from "./style";
+import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonBannerStyled, ButtonsBanner, OpinionCard, CarouselLayout, DivImageBackground, FakeButtonFeatures, FaqItem, FaqList, FeatureCard, ImageArea, ProductLabels, LayoutCards, LayoutFeaturesCards, LinkBannerStyled, MenuIcons, OpinionText, Overlay, PreviewProductComponent, Price, ProductData, Profile, ProfileDescription, ResponseBar, SectionStyled, Stars, StarsAndQuantity, StrongNameSection, TextsInitialBanner, TitleFeatures, TitleSection, VisualBars } from "./style";
 import perfil1 from '../../assets/perfil1.jpg';
 import perfil2 from '../../assets/perfil2.jpg';
 import perfil3 from '../../assets/perfil3.jpg';
 
+const Features = [
+    {
+        icon: [
+            "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
+        ],
+        scale: "25",
+        title: "Best Quality",
+        description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed",
+    },
+    {
+        icon: [
+            "M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z",
+            "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16",
+        ],
+        scale: "25",
+        title: "Safety Payment Option",
+        description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed",
+    },
+    {
+        icon: [
+            "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
+        ],
+        scale: "25",
+        title: "Find Us Anywhere",
+        description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed",
+    },
+];
+
+const CardComents = [
+    {
+        scale: '40',
+        comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+        pfp: perfil1,
+        name: 'Vasanth Kumar',
+        description: 'Productor Manager',
+    },
+    {
+        scale: '40',
+        comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+        pfp: perfil2,
+        name: 'Suresh',
+        description: 'Productor Manager',
+    },
+    {
+        scale: '40',
+        comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+        pfp: perfil3,
+        name: 'Joe Brihop',
+        description: 'Costume Designer',
+    },
+];
+
+const FaqQuest = [
+    'How do I place an order?',
+    'What payment methods do you accept?',
+    'Is my payment information secure?',
+    'How can I track my order?',
+];
+
 export const Home = () => {
-    const { setAtualRoute, values, setBag } = useContext(DataContext);
+    const { setCurrentRoute, values, setBag } = useContext(DataContext);
 
-    const [ recentList, setRecentList ] = useState([]);
-    const [ atualProduct, setAtualProduct ] = useState({});
+    const [ popularList, setPopularList ] = useState([]);
+    const [ currentProduct, setCurrentProduct ] = useState({});
 
-    useEffect(() => {
-        setAtualRoute('Home');
-    }, []);
-
-    useEffect(() => {
-        if(values.length > 0)
-            setRecentList(values.filter( item => item.id <= 3) || []);
-            const [ first ] = values.filter( item => item.id == 1);
-            setAtualProduct(first);
-    }, [values]);
-
-    const Features = [
-        {
-            icon: [
-                "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
-            ],
-            scale: "25",
-            title: "Best Quality",
-            description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed"
-        },
-        {
-            icon: [
-                "M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z",
-                "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16",
-            ],
-            scale: "25",
-            title: "Safety Payment Option",
-            description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed"
-        },
-        {
-            icon: [
-                "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
-            ],
-            scale: "25",
-            title: "Find Us Anywhere",
-            description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed"
-        },
-    ];
-
-    const backProduct = () => {
-        const ind = recentList.findIndex((item) => {
-            return item == atualProduct; 
+    const backPreviw = () => {
+        const index = popularList.findIndex((item) => {
+            return item == currentProduct; 
         });
-        (ind <= 2 && ind != 0) ? setAtualProduct(recentList[ind - 1]) : setAtualProduct(recentList[2])
+        (index <= 2 && index != 0) ? setCurrentProduct(popularList[index - 1]) : setCurrentProduct(popularList[2])
     };
-    const nextProduct = () => {
-        const ind = recentList.findIndex((item) => {
-            return item == atualProduct;
+    const nextPreview = () => {
+        const index = popularList.findIndex((item) => {
+            return item == currentProduct;
         });
-        (ind >= 0 && ind != 2) ? setAtualProduct(recentList[ind + 1]) : setAtualProduct(recentList[0])
+        (index >= 0 && index != 2) ? setCurrentProduct(popularList[index + 1]) : setCurrentProduct(popularList[0])
     };
-
-    const CardComents = [
-        {
-            scale: '40',
-            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
-            pfp: perfil1,
-            name: 'Vasanth Kumar',
-            description: 'Productor Manager'
-        },
-        {
-            scale: '40',
-            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
-            pfp: perfil2,
-            name: 'Suresh',
-            description: 'Productor Manager'
-        },
-        {
-            scale: '40',
-            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
-            pfp: perfil3,
-            name: 'Joe Brihop',
-            description: 'Costume Designer'
-        },
-    ];
-
-    const FaqQuest = [
-        'How do I place an order?',
-        'What payment methods do you accept?',
-        'Is my payment information secure?',
-        'How can I track my order?'
-    ];
-
     const addCart = (item) => {
         setBag(prev => {
             if(prev.includes(item))
@@ -103,26 +91,37 @@ export const Home = () => {
         });
     };
 
+    useEffect(() => {
+        setCurrentRoute('Home');
+    }, []);
+
+    useEffect(() => {
+        if(values.length > 0)
+            setPopularList(values.filter( item => item.id <= 3) || []);
+            const [ first ] = values.filter( item => item.id == 1);
+            setCurrentProduct(first);
+    }, [values]);
+
     return (
         <>
             <SectionStyled>
                 <DivImageBackground>
                     <Overlay></Overlay>
-                    <Texts>
+                    <TextsInitialBanner>
                         <p>Winter Special Sale</p>
                         <h2>
                             Dive into Winter Savings with Our Exclusive Offers
                         </h2>
-                    </Texts>
-                    <Buttons>
-                        <ButtonStyled>Explore all</ButtonStyled>
-                        <LinkStyled href="https://youtube.com" target="_blank">
+                    </TextsInitialBanner>
+                    <ButtonsBanner>
+                        <ButtonBannerStyled>Explore all</ButtonBannerStyled>
+                        <LinkBannerStyled href="https://youtube.com" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
                             </svg>
                             Our Story
-                        </LinkStyled>
-                    </Buttons>
+                        </LinkBannerStyled>
+                    </ButtonsBanner>
                 </DivImageBackground>
             </SectionStyled>
             <SectionStyled>
@@ -145,8 +144,8 @@ export const Home = () => {
                 </LayoutFeaturesCards>
             </SectionStyled>
             <SectionStyled>
-                <StrongProducts>Products</StrongProducts>
-                <TitleProducts>Best Quality Products</TitleProducts>
+                <StrongNameSection>Products</StrongNameSection>
+                <TitleSection>Best Quality Products</TitleSection>
                 <MenuIcons>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="currentColor" height="50" width="50" version="1.1" id="Layer_1" viewBox="0 0 490.561 490.561" xmlSpace="preserve">
@@ -205,17 +204,16 @@ export const Home = () => {
                     </div>
                 </MenuIcons>
             </SectionStyled>
-            { recentList &&
+            { popularList &&
                 <SectionStyled>
-                    <StrongProducts>Popular</StrongProducts>
-                    <TitleProducts>Popular Collection</TitleProducts>
-                    <PopularCollectionComponent>
+                    <StrongNameSection>Popular</StrongNameSection>
+                    <TitleSection>Popular Collection</TitleSection>
+                    <PreviewProductComponent>
                         <ProductData>
-                            <Labels>
-                                <strong>{atualProduct?.title}</strong>
-                                <p>{atualProduct?.description}</p>
-                            </Labels>
-                            
+                            <ProductLabels>
+                                <strong>{currentProduct?.title}</strong>
+                                <p>{currentProduct?.description}</p>
+                            </ProductLabels>
                             <StarsAndQuantity>
                                 <Stars>
                                     <div>
@@ -234,9 +232,9 @@ export const Home = () => {
                                 </p>
                             </StarsAndQuantity>
                             <BottomPosition>
-                                <Price>$ {atualProduct?.price}</Price>
+                                <Price>$ {currentProduct?.price}</Price>
                                 <ButtonArea>
-                                    <BtnAddBag onClick={() => addCart(atualProduct)}>Add Bag</BtnAddBag>
+                                    <BtnAddBag onClick={() => addCart(currentProduct)}>Add Bag</BtnAddBag>
                                     <AreaBtnDetails>
                                         <button>Details</button>
                                         <button>
@@ -247,25 +245,21 @@ export const Home = () => {
                                     </AreaBtnDetails>
                                 </ButtonArea>
                                 <CarouselLayout>
-                                    <VisualRes>
-                                        {recentList.map((item, index) => {
-                                            if(atualProduct === item)
-                                                return (
-                                                    <ResponseBar key={index} color='black'></ResponseBar>
-                                                )
+                                    <VisualBars>
+                                        {popularList.map((item, index) => {
+                                            if(currentProduct === item)
+                                                return <ResponseBar key={index} color='black'></ResponseBar>
 
-                                            return (
-                                                <ResponseBar key={index} color='gray'></ResponseBar>
-                                            )
+                                            return <ResponseBar key={index} color='gray'></ResponseBar>
                                         })}
-                                    </VisualRes>
+                                    </VisualBars>
                                     <ArrowButtons>
-                                        <button onClick={backProduct}>
+                                        <button onClick={backPreviw}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                                                 <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                                             </svg>
                                         </button>
-                                        <button onClick={nextProduct}>
+                                        <button onClick={nextPreview}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                                                 <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                                             </svg>
@@ -275,17 +269,17 @@ export const Home = () => {
                             </BottomPosition>
                         </ProductData>
                         <ImageArea>
-                            <img src={atualProduct?.image} alt="product-image"/>
+                            <img src={currentProduct?.image} alt="product_image"/>
                         </ImageArea>
-                    </PopularCollectionComponent>
+                    </PreviewProductComponent>
                 </SectionStyled>
             }
             <SectionStyled>
-                <StrongProducts>Testimonial</StrongProducts>
-                <TitleProducts>What Our Customer says</TitleProducts>
+                <StrongNameSection>Testimonial</StrongNameSection>
+                <TitleSection>What Our Customer says</TitleSection>
                 <LayoutCards>
                     {CardComents.map( (item, index) => 
-                        <CardOpinion key={index}>
+                        <OpinionCard key={index}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width={item.scale} height={item.scale} viewBox="0 0 24 24">
                                 <path fill="none" d="M0 0h24v24H0z"/>
                                 <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
@@ -298,16 +292,16 @@ export const Home = () => {
                                     <span>{item.description}</span>
                                 </ProfileDescription>
                             </Profile>
-                        </CardOpinion>
+                        </OpinionCard>
                     )}
                 </LayoutCards>
             </SectionStyled>
             <SectionStyled>
-                <StrongProducts>FAQ</StrongProducts>
-                <TitleProducts>Frenquently Asked Question</TitleProducts>
+                <StrongNameSection>FAQ</StrongNameSection>
+                <TitleSection>Frenquently Asked Question</TitleSection>
                 <FaqList>
                     {FaqQuest.map((label, index) => 
-                        <FaqItem>
+                        <FaqItem key={index}>
                             <strong>{label}</strong>
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>

@@ -4,9 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Bag = () => {
-    const { bag, setBag, setAtualRoute } = useContext(DataContext);
+    const { bag, setBag, setCurrentRoute } = useContext(DataContext);
     useEffect(() => {
-        setAtualRoute('Bag')
+        setCurrentRoute('Bag');
     }, []);
     if(bag.length < 1)
         return(
@@ -17,7 +17,7 @@ export const Bag = () => {
     const [ data, setData ] = useState([]);
     useEffect(() => {
         console.log(data);
-        setAtualRoute('Bag')
+        setCurrentRoute('Bag')
     }, [data]);
 
     useEffect(() => {

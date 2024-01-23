@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import banner from "../../assets/banner_background.jpg"
 
+// Banner
 export const SectionStyled = styled.section`
-    margin: 4em 0;
+    margin: 3em 0;
 `
 
 export const DivImageBackground = styled.div`
@@ -29,7 +30,7 @@ export const Overlay = styled.div`
     backdrop-filter: brightness(70%);
 `
 
-export const Texts = styled.div`
+export const TextsInitialBanner = styled.div`
     position: relative;
     text-align: center;
     color: white;
@@ -44,7 +45,7 @@ export const Texts = styled.div`
     }
 `
 
-export const Buttons = styled.div`
+export const ButtonsBanner = styled.div`
     position: relative;
     display: flex;
     gap: 1em;
@@ -52,7 +53,7 @@ export const Buttons = styled.div`
     width: 30%;
 `
 
-export const ButtonStyled = styled.button`
+export const ButtonBannerStyled = styled.button`
     flex: 1;
     padding: .6em .8em;
     background-color: white;
@@ -64,7 +65,7 @@ export const ButtonStyled = styled.button`
     font-size: calc(10px + .4vmin);
 `
 
-export const LinkStyled = styled.a`
+export const LinkBannerStyled = styled.a`
     flex: 1;
     padding: .6em .8em;
     background-color: transparent;
@@ -79,6 +80,7 @@ export const LinkStyled = styled.a`
 `
 
 // ===========
+// Features
 export const FakeButtonFeatures = styled.div`
     width: 10em;
     margin: 0 auto;
@@ -121,11 +123,12 @@ export const FeatureCard = styled.div`
 `
 
 // ============
-export const StrongProducts = styled.strong`
+// Product Categories Menu 
+export const StrongNameSection = styled.strong`
     font-size: calc(10px + 1vmin);
 `
 
-export const TitleProducts = styled.h2`
+export const TitleSection = styled.h2`
     font-size: calc(10px + 3vmin);
     font-weight: 600;
 `
@@ -159,7 +162,8 @@ export const MenuIcons = styled.div`
 `
 
 // ===========
-export const PopularCollectionComponent = styled.div`
+// Popular Products
+export const PreviewProductComponent = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(505px, 1fr));
     column-gap: .5em;
@@ -184,7 +188,7 @@ export const ProductData = styled.div`
     gap: 1em;
 `
 
-export const Labels = styled.div`
+export const ProductLabels = styled.div`
     pointer-events: none;
 `
 
@@ -284,7 +288,7 @@ export const CarouselLayout = styled.div`
     align-items: center;
 `
 
-export const VisualRes = styled.div`
+export const VisualBars = styled.div`
     display: flex;
     gap: .3em;
     height: .3em;
@@ -296,6 +300,7 @@ export const ResponseBar = styled.div`
     width: 4em;
     border-radius: .3em;
 `
+
 export const ArrowButtons = styled.div`
     display: flex;
     gap: .5em;
@@ -314,15 +319,15 @@ export const ArrowButtons = styled.div`
     }
 `
 
-
 // ======================
+// Comments feedback
 export const LayoutCards = styled.div`
     display: flex;
     gap: 3.2em;
     pointer-events: none;
 `
 
-export const CardOpinion = styled.div`
+export const OpinionCard = styled.div`
     display: flex;
     flex-direction: column;
     gap: .8em;
@@ -361,7 +366,9 @@ export const ProfileDescription = styled.div`
         font-size: calc(10px + .4vmin);
     }
 `
+
 // ===========
+// FAQ
 export const FaqList = styled.div`
     display: flex;
     flex-direction: column;

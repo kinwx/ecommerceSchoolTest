@@ -3,7 +3,7 @@ import { DataContext } from "../../App";
 import { Link } from "react-router-dom";
 
 export const Products = () => {
-    const { values, setBag, setAtualRoute } = useContext(DataContext);
+    const { values, setBag, setCurrentRoute } = useContext(DataContext);
 
     if(values.length < 1)
         return (
@@ -22,7 +22,7 @@ export const Products = () => {
     };
 
     useEffect(() => {
-        setAtualRoute('Products');
+        setCurrentRoute('Products');
     }, []);
 
     return (
