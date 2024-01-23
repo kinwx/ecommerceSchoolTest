@@ -18,7 +18,7 @@ export const Layout = () => {
                                     <ItemLink select={atualRoute == 'Home' ? "black" : "gray"}><Link to="/">Home</Link></ItemLink>
                                     <ItemLink select={atualRoute == 'Products' ? "black" : "gray"}><Link to="/products">Products</Link></ItemLink>
                                     <ItemLink select={atualRoute == 'Wishlist' ? "black" : "gray"}><Link to="/wishlist">Wishlist</Link></ItemLink>
-                                    <ItemLink select={atualRoute == 'Bag' ? "black" : "gray"}><Link to="/bag">Bag {bag.length > 0 && <span>{bag.length}</span>}</Link></ItemLink>
+                                    <ItemLink select={atualRoute == 'Bag' ? "black" : "gray"}><Link to="/bag">Bag {bag.length > 0 && <span>{bag.length > 99 ? '99+' : bag.length}</span>}</Link></ItemLink>
                                 </ListButtons>
                             </nav>
                         </NavButtons>

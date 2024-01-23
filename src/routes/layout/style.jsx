@@ -47,6 +47,22 @@ export const ItemLink = styled.li`
         text-decoration: none;
         color: ${props => props.select};
         font-weight: ${props => props.select == 'black' ? 500 : 400 };
+        display: flex;
+        align-items: center;
+        gap: .4em;
+
+        & > span {
+            background-color: red;
+            color: #ffffff;
+            border-radius: 49%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8em;
+            height: 1.8em;
+            font-weight: 500;
+            font-size: calc(10px + .3vmin);
+        }
     }
 `
 
@@ -107,7 +123,7 @@ export const FooterInside = styled.div`
     width: 1024px;
     height: 100%;
     margin: 0 auto;
-    padding: 2em 2em 6em;
+    padding: 3em 2em 6em;
 
     display: grid;
     grid-template-columns: 8fr 1fr 1fr;

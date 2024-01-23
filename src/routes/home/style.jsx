@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import banner from "../../assets/banner_background.jpg"
 
-export const SectionStyled1 = styled.section`
-    margin: 3em 0;
+export const SectionStyled = styled.section`
+    margin: 4em 0;
 `
 
 export const DivImageBackground = styled.div`
@@ -316,31 +316,36 @@ export const ArrowButtons = styled.div`
 
 
 // ======================
-export const CardOpnion = styled.div`
+export const LayoutCards = styled.div`
+    display: flex;
+    gap: 3.2em;
+    pointer-events: none;
+`
+
+export const CardOpinion = styled.div`
     display: flex;
     flex-direction: column;
-    gap: .2em;
+    gap: .8em;
 
     & > svg {
-        color: gray;
-        margin-bottom: 1em;
+        color: #c0c0c0;
+        margin: 1em 0;
     }
 `
 
-export const OpnionText = styled.p`
+export const OpinionText = styled.p`
     font-weight: 500;
+    text-align: justify;
 `
 
 export const Profile = styled.div`
     display: flex;
     gap: 1em;
-    border: 1px solid red;
 
     & > img {
-        width: 5em;
+        width: 4em;
         aspect-ratio: 8/8;
         object-fit: cover;
-        border: 1px solid blue;
         border-radius: 50%;
     }
     
@@ -354,5 +359,25 @@ export const ProfileDescription = styled.div`
     & > span {
         color: gray;
         font-size: calc(10px + .4vmin);
+    }
+`
+// ===========
+export const FaqList = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 2.2em;
+    margin-top: 3em;
+`
+
+export const FaqItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > strong {
+        font-size: calc(10px + .8vmin);
+    }
+    & > svg {
+        cursor: pointer;
     }
 `

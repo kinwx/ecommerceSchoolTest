@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
-import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonStyled, Buttons, CardOpnion, CarouselLayout, DivImageBackground, FakeButtonFeatures, FeatureCard, ImageArea, Labels, LayoutFeaturesCards, LinkStyled, MenuIcons, OpnionText, Overlay, PopularCollectionComponent, Price, ProductData, Profile, ProfileDescription, ResponseBar, SectionStyled1, Stars, StarsAndQuantity, StrongProducts, Texts, TitleFeatures, TitleProducts, VisualRes } from "./style";
+import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonStyled, Buttons, CardOpinion, CarouselLayout, DivImageBackground, FakeButtonFeatures, FaqItem, FaqList, FeatureCard, ImageArea, Labels, LayoutCards, LayoutFeaturesCards, LinkStyled, MenuIcons, OpinionText, Overlay, PopularCollectionComponent, Price, ProductData, Profile, ProfileDescription, ResponseBar, SectionStyled, Stars, StarsAndQuantity, StrongProducts, Texts, TitleFeatures, TitleProducts, VisualRes } from "./style";
 import perfil1 from '../../assets/perfil1.jpg';
 import perfil2 from '../../assets/perfil2.jpg';
 import perfil3 from '../../assets/perfil3.jpg';
 
 export const Home = () => {
-    const { setAtualRoute, values } = useContext(DataContext);
+    const { setAtualRoute, values, setBag } = useContext(DataContext);
 
     const [ recentList, setRecentList ] = useState([]);
     const [ atualProduct, setAtualProduct ] = useState({});
@@ -48,7 +48,7 @@ export const Home = () => {
             title: "Find Us Anywhere",
             description: "Elevate your eyewear game with these sleek and sophisticated sunglasses designed"
         },
-    ]
+    ];
 
     const backProduct = () => {
         const ind = recentList.findIndex((item) => {
@@ -65,31 +65,47 @@ export const Home = () => {
 
     const CardComents = [
         {
-            scale: '50',
+            scale: '40',
             comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
             pfp: perfil1,
             name: 'Vasanth Kumar',
             description: 'Productor Manager'
         },
         {
-            scale: '50',
+            scale: '40',
             comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
             pfp: perfil2,
             name: 'Suresh',
             description: 'Productor Manager'
         },
         {
-            scale: '50',
+            scale: '40',
             comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
             pfp: perfil3,
             name: 'Joe Brihop',
             description: 'Costume Designer'
         },
-    ]
+    ];
+
+    const FaqQuest = [
+        'How do I place an order?',
+        'What payment methods do you accept?',
+        'Is my payment information secure?',
+        'How can I track my order?'
+    ];
+
+    const addCart = (item) => {
+        setBag(prev => {
+            if(prev.includes(item))
+                return [...prev]
+
+            return [...prev, item]
+        });
+    };
 
     return (
         <>
-            <SectionStyled1>
+            <SectionStyled>
                 <DivImageBackground>
                     <Overlay></Overlay>
                     <Texts>
@@ -108,8 +124,8 @@ export const Home = () => {
                         </LinkStyled>
                     </Buttons>
                 </DivImageBackground>
-            </SectionStyled1>
-            <SectionStyled1>
+            </SectionStyled>
+            <SectionStyled>
                 <FakeButtonFeatures>
                     <span>Features</span>
                 </FakeButtonFeatures>
@@ -127,8 +143,8 @@ export const Home = () => {
                         </FeatureCard>
                     )}
                 </LayoutFeaturesCards>
-            </SectionStyled1>
-            <SectionStyled1>
+            </SectionStyled>
+            <SectionStyled>
                 <StrongProducts>Products</StrongProducts>
                 <TitleProducts>Best Quality Products</TitleProducts>
                 <MenuIcons>
@@ -188,9 +204,9 @@ export const Home = () => {
                         <span>See all</span>
                     </div>
                 </MenuIcons>
-            </SectionStyled1>
+            </SectionStyled>
             { recentList &&
-                <SectionStyled1>
+                <SectionStyled>
                     <StrongProducts>Popular</StrongProducts>
                     <TitleProducts>Popular Collection</TitleProducts>
                     <PopularCollectionComponent>
@@ -220,7 +236,7 @@ export const Home = () => {
                             <BottomPosition>
                                 <Price>$ {atualProduct?.price}</Price>
                                 <ButtonArea>
-                                    <BtnAddBag>Add Bag</BtnAddBag>
+                                    <BtnAddBag onClick={() => addCart(atualProduct)}>Add Bag</BtnAddBag>
                                     <AreaBtnDetails>
                                         <button>Details</button>
                                         <button>
@@ -262,19 +278,19 @@ export const Home = () => {
                             <img src={atualProduct?.image} alt="product-image"/>
                         </ImageArea>
                     </PopularCollectionComponent>
-                </SectionStyled1>
+                </SectionStyled>
             }
-            <SectionStyled1>
-                <StrongProducts>Popular</StrongProducts>
-                <TitleProducts>Popular Collection</TitleProducts>
-                <div>
+            <SectionStyled>
+                <StrongProducts>Testimonial</StrongProducts>
+                <TitleProducts>What Our Customer says</TitleProducts>
+                <LayoutCards>
                     {CardComents.map( (item, index) => 
-                        <CardOpnion>
+                        <CardOpinion key={index}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width={item.scale} height={item.scale} viewBox="0 0 24 24">
                                 <path fill="none" d="M0 0h24v24H0z"/>
                                 <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
                             </svg>
-                            <OpnionText>{item.comment}</OpnionText>
+                            <OpinionText>{item.comment}</OpinionText>
                             <Profile>
                                 <img src={item.pfp} alt="image_perfil" />
                                 <ProfileDescription>
@@ -282,26 +298,24 @@ export const Home = () => {
                                     <span>{item.description}</span>
                                 </ProfileDescription>
                             </Profile>
-                        </CardOpnion>
+                        </CardOpinion>
                     )}
-                    <CardOpnion>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="50" height="50" viewBox="0 0 24 24">
-                            <path fill="none" d="M0 0h24v24H0z"/>
-                            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
-                        </svg>
-                        <OpnionText>
-                            The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!
-                        </OpnionText>
-                        <Profile>
-                            <img src={perfil1} alt="image_perfil" />
-                            <ProfileDescription>
-                                <strong>Vasanth</strong>
-                                <span>Product</span>
-                            </ProfileDescription>
-                        </Profile>
-                    </CardOpnion>
-                </div>
-            </SectionStyled1>
+                </LayoutCards>
+            </SectionStyled>
+            <SectionStyled>
+                <StrongProducts>FAQ</StrongProducts>
+                <TitleProducts>Frenquently Asked Question</TitleProducts>
+                <FaqList>
+                    {FaqQuest.map((label, index) => 
+                        <FaqItem>
+                            <strong>{label}</strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+                                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                            </svg>
+                        </FaqItem>
+                    )}
+                </FaqList>
+            </SectionStyled>
         </>
     );
 };
