@@ -313,3 +313,46 @@ export const ArrowButtons = styled.div`
         cursor: pointer;
     }
 `
+
+
+// ======================
+export const CardOpnion = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+
+    & > svg {
+        color: gray;
+        margin-bottom: 1em;
+    }
+`
+
+export const OpnionText = styled.p`
+    font-weight: 500;
+`
+
+export const Profile = styled.div`
+    display: flex;
+    gap: 1em;
+    border: 1px solid red;
+
+    & > img {
+        width: 5em;
+        aspect-ratio: 8/8;
+        object-fit: cover;
+        border: 1px solid blue;
+        border-radius: 50%;
+    }
+    
+`
+
+export const ProfileDescription = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & > span {
+        color: gray;
+        font-size: calc(10px + .4vmin);
+    }
+`

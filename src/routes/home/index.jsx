@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
-import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonStyled, Buttons, CarouselLayout, DivImageBackground, FakeButtonFeatures, FeatureCard, ImageArea, Labels, LayoutFeaturesCards, LinkStyled, MenuIcons, Overlay, PopularCollectionComponent, Price, ProductData, ResponseBar, SectionStyled1, Stars, StarsAndQuantity, StrongProducts, Texts, TitleFeatures, TitleProducts, VisualRes } from "./style";
+import { AreaBtnDetails, ArrowButtons, BottomPosition, BtnAddBag, ButtonArea, ButtonStyled, Buttons, CardOpnion, CarouselLayout, DivImageBackground, FakeButtonFeatures, FeatureCard, ImageArea, Labels, LayoutFeaturesCards, LinkStyled, MenuIcons, OpnionText, Overlay, PopularCollectionComponent, Price, ProductData, Profile, ProfileDescription, ResponseBar, SectionStyled1, Stars, StarsAndQuantity, StrongProducts, Texts, TitleFeatures, TitleProducts, VisualRes } from "./style";
+import perfil1 from '../../assets/perfil1.jpg';
+import perfil2 from '../../assets/perfil2.jpg';
+import perfil3 from '../../assets/perfil3.jpg';
 
 export const Home = () => {
     const { setAtualRoute, values } = useContext(DataContext);
@@ -59,6 +62,30 @@ export const Home = () => {
         });
         (ind >= 0 && ind != 2) ? setAtualProduct(recentList[ind + 1]) : setAtualProduct(recentList[0])
     };
+
+    const CardComents = [
+        {
+            scale: '50',
+            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+            pfp: perfil1,
+            name: 'Vasanth Kumar',
+            description: 'Productor Manager'
+        },
+        {
+            scale: '50',
+            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+            pfp: perfil2,
+            name: 'Suresh',
+            description: 'Productor Manager'
+        },
+        {
+            scale: '50',
+            comment: "The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!",
+            pfp: perfil3,
+            name: 'Joe Brihop',
+            description: 'Costume Designer'
+        },
+    ]
 
     return (
         <>
@@ -237,6 +264,44 @@ export const Home = () => {
                     </PopularCollectionComponent>
                 </SectionStyled1>
             }
+            <SectionStyled1>
+                <StrongProducts>Popular</StrongProducts>
+                <TitleProducts>Popular Collection</TitleProducts>
+                <div>
+                    {CardComents.map( (item, index) => 
+                        <CardOpnion>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width={item.scale} height={item.scale} viewBox="0 0 24 24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
+                            </svg>
+                            <OpnionText>{item.comment}</OpnionText>
+                            <Profile>
+                                <img src={item.pfp} alt="image_perfil" />
+                                <ProfileDescription>
+                                    <strong>{item.name}</strong>
+                                    <span>{item.description}</span>
+                                </ProfileDescription>
+                            </Profile>
+                        </CardOpnion>
+                    )}
+                    <CardOpnion>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0z"/>
+                            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
+                        </svg>
+                        <OpnionText>
+                            The fabric feels luxurious, and the attention to detail in the stitching is impressive. I'll definitely be shopping here again!
+                        </OpnionText>
+                        <Profile>
+                            <img src={perfil1} alt="image_perfil" />
+                            <ProfileDescription>
+                                <strong>Vasanth</strong>
+                                <span>Product</span>
+                            </ProfileDescription>
+                        </Profile>
+                    </CardOpnion>
+                </div>
+            </SectionStyled1>
         </>
     );
 };
