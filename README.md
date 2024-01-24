@@ -8,3 +8,5 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 Refrence: https://www.behance.net/gallery/188511175/Outster-Ecommerce-Website?tracking_source=search_projects|ecommerce+ui+design&l=50
+
+Mobile_Photo: "Projetado por rawpixel.com / Freepik"
