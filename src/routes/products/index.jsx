@@ -22,7 +22,7 @@ export const Products = () => {
 
     useEffect(() => {
         setCurrentRoute('Products');
-        setRecentList(values.filter( item => item.id <= 6 && item.id > 3))
+        setRecentList(values.filter( item => item.id <= 6 && item.id > 3));
     }, []);
 
     return (
@@ -55,26 +55,12 @@ export const Products = () => {
                     <Link>All Product</Link>
                 </TopTitle>
                 <GridLayoutProduct>
-                    <div>
-                        <span>Mobile</span>
-                        <Overlay />
-                    </div>
-                    <div>
-                        <span>Clocks</span>
-                        <Overlay />
-                    </div>
-                    <div>
-                        <span>Headphones</span>
-                        <Overlay />
-                    </div>
-                    <div>
-                        <span>Water Bottles</span>
-                        <Overlay />
-                    </div>
-                    <div>
-                        <span>Jewellery</span>
-                        <Overlay />
-                    </div>
+                    {["Mobile", "Clocks", "Headphones", "Water Bottles", "Jewellery"].map((label, index) =>
+                        <div>
+                            <span>{label}</span>
+                            <Overlay />
+                        </div>
+                    )}
                 </GridLayoutProduct>
             </SectionStyled>
             <SectionStyled>
