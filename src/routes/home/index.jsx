@@ -85,9 +85,9 @@ export const Home = () => {
     const addCart = (item) => {
         setBag(prev => {
             if(prev.includes(item))
-                return [...prev]
+                return [...prev];
 
-            return [...prev, item]
+            return [...prev, item];
         });
     };
 
@@ -228,7 +228,7 @@ export const Home = () => {
                                     <span>(1.3k)</span>
                                 </Stars>
                                 <p>
-                                    43 Stock Avaliable
+                                    {currentProduct?.id == 4 ? '28 Stock Avaliable' : '43 Stock Avaliable'}
                                 </p>
                             </StarsAndQuantity>
                             <BottomPosition>

@@ -44,7 +44,7 @@ function App() {
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="bag" element={<Bag />} />
             <Route path="finished" element={<Finished />} />
-            <Route path="products/allproducts" element={<AllProducts />} />
+            <Route path="products/all" element={<AllProducts />} />
           </Route>
         </Routes>
       </BrowserRouter>

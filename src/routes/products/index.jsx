@@ -1,55 +1,49 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import { Link } from "react-router-dom";
+import girlPhoto from "../../assets/girl_banner_products.jpg";
+import { BannerProducts, BannerTexts, LayoutRecentList, SectionStyled, TopTitle } from "./style";
+import { ProductCard } from "../../components/ProductCard";
 
 export const Products = () => {
-    const { values, setBag, setCurrentRoute } = useContext(DataContext);
+    const { values, setCurrentRoute } = useContext(DataContext);
 
     if(values.length < 1)
         return (
             <span>Carregando...</span>
         );
 
-    const [ recentList, setRecentList ] = useState(values.filter( item => item.id <= 3));
-
-    const addCart = (item) => {
-        setBag(prev => {
-            if(prev.includes(item))
-                return [...prev]
-
-            return [...prev, item]
-        });
-    };
+    const [ recentList, setRecentList ] = useState([]);
 
     useEffect(() => {
         setCurrentRoute('Products');
+        setRecentList(values.filter( item => item.id <= 6 && item.id > 3))
     }, []);
 
     return (
-        <div>
-            <div>
-                Bem vindo aos Produtos
-            </div>
-            <div>
-                <div>
-                    <h2>Recent shopping</h2>
+        <>
+            <SectionStyled>
+                <BannerProducts>
+                    <BannerTexts>
+                        <p>
+                            Explore the Latest Trends and Unleash Your Fashionista. Your Ultimate Shopping, Destination Awaits
+                        </p>
+                        <button>Show now</button>
+                    </BannerTexts>
+                    <img src={girlPhoto} alt="image_girl" />
+                </BannerProducts>
+            </SectionStyled>      
+            <SectionStyled>
+                <TopTitle>
+                    <span>Recent shopping</span>
                     <Link>See all</Link>
-                </div>
-                <div>
-                    {recentList.map((item, index) => 
-                        <div className="card" key={index}>
-                            <img src={item.image} alt="image" />
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <div>
-                                <span>{item.price}</span>
-                                <button>heart</button>
-                            </div>
-                            <button onClick={() => addCart(item)}>addbag</button>
-                        </div>
+                </TopTitle>
+                <LayoutRecentList>
+                    {recentList?.map((item, index) => 
+                        <ProductCard key={index} itemData={item} />
                     )}
-                </div>
-            </div>
-        </div>      
+                </LayoutRecentList>
+            </SectionStyled>
+        </>
     );
 };
