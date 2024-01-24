@@ -35,7 +35,7 @@ export const ProductCard = ({itemData}) => {
                     </div>
                     <span>(1.3k)</span>
                 </Stars>
-                <p>{id == 2 ? "12 Stock Avaliable" : "43 Stock Avaliable"}</p>
+                <p>{id == 5 ? "12 Stock Avaliable" : "43 Stock Avaliable"}</p>
             </StarsAndQuantity>
             <PriceAndWish>
                 <Price>$ {price}</Price>

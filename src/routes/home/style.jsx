@@ -24,6 +24,7 @@ export const DivImageBackground = styled.div`
 
 export const Overlay = styled.div`
     position: absolute;
+    top: 0;
     z-index: 0;
     width: 100%;
     height: 100%;
