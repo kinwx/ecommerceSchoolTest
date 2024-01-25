@@ -14,9 +14,7 @@ export const Products = () => {
     const { values, setCurrentRoute } = useContext(DataContext);
 
     if(values.length < 1)
-        return (
-            <span>Carregando...</span>
-        );
+        return ( <span>Carregando...</span> );
 
     const [ recentList, setRecentList ] = useState([]);
 
@@ -56,7 +54,7 @@ export const Products = () => {
                 </TopTitle>
                 <GridLayoutProduct>
                     {["Mobile", "Clocks", "Headphones", "Water Bottles", "Jewellery"].map((label, index) =>
-                        <div>
+                        <div key={index}>
                             <span>{label}</span>
                             <Overlay />
                         </div>
