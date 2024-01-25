@@ -5,15 +5,15 @@ export const SectionBagStyled = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1em;
+    z-index: 0;
 
     & > span {
-        font-size: calc(10px + 1vmin);
+        font-size: calc(10px + 2vmin);
         font-weight: 500;
     }
 `
 
 export const BagItemsAndPaymentLayout = styled.div`
-    position: relative;
     display: flex;
     gap: 1em;
 `
@@ -26,10 +26,15 @@ export const ItemsBagLayout = styled.div`
     row-gap: 2em;
 `
 
-export const DataQuantityAndPayment = styled.div`
+export const AsidePayment = styled.div`
+    position: relative;
     flex: 1;
-    position: sticky;
-    top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+`
+
+export const DataQuantityAndPayment = styled.div`
     height: max-content;
     display: flex;
     flex-direction: column;
@@ -42,6 +47,7 @@ export const DataQuantityAndPayment = styled.div`
         text-align: center;
         color: white;
         padding: 1em 0;
+        cursor: pointer;
     }
 `
 

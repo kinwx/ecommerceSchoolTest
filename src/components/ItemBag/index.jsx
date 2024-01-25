@@ -40,7 +40,7 @@ export const ItemBag = ({itemData, setCount, removeItem}) => {
                 <span>{count}</span>
                 <button onClick={() => setCount(id, 2)}>+</button>
             </CountArea>
-            <ButtonRemove onClick={() => removeItem(id)}>remove</ButtonRemove>
+            <ButtonRemove onClick={() => removeItem(id)}>Remove From Bag</ButtonRemove>
         </CardLayout>
     );
 };

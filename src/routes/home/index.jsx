@@ -74,13 +74,13 @@ export const Home = () => {
         const index = popularList.findIndex((item) => {
             return item == currentProduct; 
         });
-        (index <= 2 && index != 0) ? setCurrentProduct(popularList[index - 1]) : setCurrentProduct(popularList[2])
+        (index <= 2 && index != 0) ? setCurrentProduct(popularList[index - 1]) : setCurrentProduct(popularList[2]);
     };
     const nextPreview = () => {
         const index = popularList.findIndex((item) => {
             return item == currentProduct;
         });
-        (index >= 0 && index != 2) ? setCurrentProduct(popularList[index + 1]) : setCurrentProduct(popularList[0])
+        (index >= 0 && index != 2) ? setCurrentProduct(popularList[index + 1]) : setCurrentProduct(popularList[0]);
     };
     const addCart = (item) => {
         setBag(prev => {
@@ -204,7 +204,7 @@ export const Home = () => {
                     </div>
                 </MenuIcons>
             </SectionStyled>
-            { popularList &&
+            { popularList.length > 0 &&
                 <SectionStyled>
                     <StrongNameSection>Popular</StrongNameSection>
                     <TitleSection>Popular Collection</TitleSection>
@@ -228,7 +228,7 @@ export const Home = () => {
                                     <span>(1.3k)</span>
                                 </Stars>
                                 <p>
-                                    {currentProduct?.id == 4 ? '28 Stock Avaliable' : '43 Stock Avaliable'}
+                                    {currentProduct?.id == 2 ? '12 Stock Avaliable' : '43 Stock Avaliable'}
                                 </p>
                             </StarsAndQuantity>
                             <BottomPosition>

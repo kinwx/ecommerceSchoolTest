@@ -24,4 +24,5 @@ export const ButtonRemove = styled.button`
     text-align: center;
     color: white;
     padding: 1em 0;
+    cursor: pointer;
 `

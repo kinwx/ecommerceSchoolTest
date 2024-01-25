@@ -3,7 +3,8 @@ import { DataContext } from "../../App";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ItemBag } from "../../components/ItemBag";
-import { BagItemsAndPaymentLayout, DataQuantityAndPayment, ItemsBagLayout, ItemsBagList, SectionBagStyled, Total } from "./style";
+import { AsidePayment, BagItemsAndPaymentLayout, DataQuantityAndPayment, ItemsBagLayout, ItemsBagList, SectionBagStyled, Total } from "./style";
+import { FormPaymentComponent } from "../../components/FormPayment";
 
 export const Bag = () => {
     const { bag, setBag, setCurrentRoute } = useContext(DataContext);
@@ -54,36 +55,6 @@ export const Bag = () => {
             return [...newList];
         });
     };
-
-    const [ localData, setLocalData ] = useState({
-        cep: "",
-        logradouro: "",
-        bairro: "",
-        localidade: "",
-        uf: "",
-    });
-
-    const fetchCep = async () => {
-        try {
-            const { data } = await axios.get(`https://viacep.com.br/ws/${localData.cep}/json/`);
-            setLocalData(data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    useEffect(() => {
-        if(localData.cep.length > 7) {
-            fetchCep();
-        };
-    }, [localData.cep]);
-    const toNavigate = useNavigate();
-
-    const finishedFunc = (e) => {
-        e.preventDefault();
-        toNavigate('/finished');
-    };
-
     return (
         <>
             { bag.length == 0 && 
@@ -98,60 +69,32 @@ export const Bag = () => {
                                 <ItemBag key={index} itemData={item} setCount={setCount} removeItem={removeItem} />
                             )}
                         </ItemsBagLayout>
-                        <DataQuantityAndPayment>
-                            <span>Items ({data.length})</span>
-                            <ItemsBagList>
-                                {data.map( (item, index) =>  
-                                    item.count > 0 && 
-                                        <li key={index}>
-                                            <p>{item.title}</p>
-                                            <div>
-                                                <span>x {item.count}</span>
-                                                <span>$ {item.count * item.price}</span>
-                                            </div>
-                                        </li>
-                                )}
-                            </ItemsBagList>
-                            <Total>
-                                <span>Total ({data.reduce((el, it) => el + it.count, 0)})</span>
-                                <span>$ {data.reduce((el, item) => el + (item.count * item.price), 0)}</span>
-                            </Total>
-                            <button onClick={() => setOpenForm(prev => !prev)}>Proceder e Pagar</button>
-                        </DataQuantityAndPayment>
+                        <AsidePayment>
+                            <DataQuantityAndPayment>
+                                <span>Items ({data.length})</span>
+                                <ItemsBagList>
+                                    {data.map( (item, index) =>  
+                                        item.count > 0 && 
+                                            <li key={index}>
+                                                <p>{item.title}</p>
+                                                <div>
+                                                    <span>x {item.count}</span>
+                                                    <span>$ {(item.count * item.price).toFixed(2)}</span>
+                                                </div>
+                                            </li>
+                                    )}
+                                </ItemsBagList>
+                                <Total>
+                                    <span>Total ({data.reduce((el, it) => el + it.count, 0)})</span>
+                                    <span>$ {data.reduce((el, item) => el + (item.count * item.price), 0).toFixed(2)}</span>
+                                </Total>
+                                <button onClick={() => setOpenForm(prev => !prev)}>Proceder e Pagar</button>
+                            </DataQuantityAndPayment>
+                            { openForm &&
+                                <FormPaymentComponent setOpenForm={setOpenForm} />
+                            }
+                        </AsidePayment>
                     </BagItemsAndPaymentLayout>
-                    { openForm &&
-                        <div>
-                            <form onSubmit={finishedFunc}>
-                                <div>
-                                    <label htmlFor="">CEP:</label>
-                                    <input type="text" required onChange={(e) => setLocalData(prev => {
-                                        return {...prev, cep: e.target.value}
-                                    })} value={localData.cep}/>
-                                </div>
-                                <div>
-                                    <label htmlFor="">Rua/Logradouro:</label>
-                                    <input type="text" required value={localData.logradouro} />
-                                </div>
-                                <div>
-                                    <label htmlFor="">N°:</label>
-                                    <input type="text" required />
-                                </div>
-                                <div>
-                                    <label htmlFor="">Bairro:</label>
-                                    <input type="text" required value={localData.bairro} />
-                                </div>
-                                <div>
-                                    <label htmlFor="">Cidade:</label>
-                                    <input type="text" required value={localData.localidade} />
-                                </div>
-                                <div>
-                                    <label htmlFor="">UF:</label>
-                                    <input type="text" required value={localData.uf} />
-                                </div>
-                                <button>Enviar</button>
-                            </form>
-                        </div>
-                    }
                 </SectionBagStyled>
             }
         </>
