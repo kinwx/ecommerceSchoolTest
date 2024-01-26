@@ -23,6 +23,11 @@ export const Products = () => {
         setRecentList(values.filter( item => item.id <= 6 && item.id > 3));
     }, []);
 
+    useEffect(() => {
+        if(values.length > 0)
+        setRecentList(values.filter( item => item.id <= 6 && item.id > 3));
+    }, [values]);
+
     return (
         <>
             <SectionStyled>

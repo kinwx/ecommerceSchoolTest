@@ -13,13 +13,22 @@ export const DataContext = createContext(null);
 function App() {
   const [ values, setValues ] = useState([]);
   const [ bag, setBag ] = useState([]);
+  const [ wishlist, setWishlist ] = useState([]);
   const [ currentRoute, setCurrentRoute ] = useState('Home');
 
   useEffect(() => {
     const fetchData = async () => {
         try {
             const { data } = await axios.get('https://fakestoreapi.com/products');
-            setValues([...data]);
+            const dtaWithFrontValues = data.map( item => {
+              item.wish = false;
+              item.count = 0;
+              item.storage = ~~(Math.random() * 100);
+
+              return item;
+            });
+
+            setValues([...dtaWithFrontValues]);
         } catch (error) {
             console.error(error.message);
         };
@@ -31,8 +40,11 @@ function App() {
   return (
     <DataContext.Provider value={{
       values,
+      setValues,
       bag,
       setBag,
+      wishlist,
+      setWishlist,
       currentRoute,
       setCurrentRoute
     }}>

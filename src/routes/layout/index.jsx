@@ -4,7 +4,7 @@ import { DataContext } from "../../App";
 import { FooterDescription, FooterInside, FooterOptions, FooterStyled, InputDiv, ItemLink, ListButtons, LogoutButton, NavButtons, NavBar, SearchButton, HeaderStyled, StyledInput, MainStyled } from "./style";
 
 export const Layout = () => {
-    const { bag, currentRoute } = useContext(DataContext);
+    const { bag, wishlist, currentRoute } = useContext(DataContext);
 
     return (
         <>
@@ -17,7 +17,7 @@ export const Layout = () => {
                                 <ListButtons>
                                     <ItemLink select={currentRoute == 'Home' ? "black" : "gray"}><Link to="/">Home</Link></ItemLink>
                                     <ItemLink select={currentRoute == 'Products' ? "black" : "gray"}><Link to="/products">Products</Link></ItemLink>
-                                    <ItemLink select={currentRoute == 'Wishlist' ? "black" : "gray"}><Link to="/wishlist">Wishlist</Link></ItemLink>
+                                    <ItemLink select={currentRoute == 'Wishlist' ? "black" : "gray"}><Link to="/wishlist">Wishlist {wishlist.length > 0 && <span>{wishlist.length > 99 ? '99+' : wishlist.length}</span>}</Link></ItemLink>
                                     <ItemLink select={currentRoute == 'Bag' ? "black" : "gray"}><Link to="/bag">Bag {bag.length > 0 && <span>{bag.length > 99 ? '99+' : bag.length}</span>}</Link></ItemLink>
                                 </ListButtons>
                             </nav>
