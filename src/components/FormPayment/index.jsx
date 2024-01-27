@@ -3,7 +3,7 @@ import { FormArea, FormStyled} from "./style";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const FormPaymentComponent = ({setOpenForm}) => {
+export const FormPaymentComponent = ({setOpenForm, quantity, total}) => {
     const [ localData, setLocalData ] = useState({
         cep: "",
         logradouro: "",
@@ -30,7 +30,13 @@ export const FormPaymentComponent = ({setOpenForm}) => {
 
     const finishedFunc = (e) => {
         e.preventDefault();
-        toNavigate('/finished');
+        toNavigate('/finished', {
+            state: {
+                auth: true,
+                quantity,
+                total,
+            }
+        });
     };
     return (
         <FormArea>

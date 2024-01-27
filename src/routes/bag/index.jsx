@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { ItemBag } from "../../components/ItemBag";
 import { AsidePayment, BagItemsAndPaymentLayout, DataQuantityAndPayment, ItemsBagLayout, ItemsBagList, SectionBagStyled, Total } from "./style";
 import { FormPaymentComponent } from "../../components/FormPayment";
+import { SectionFooterBottom } from "../../components/SectionFooterBottom";
 
 export const Bag = () => {
     const { bag, setBag, setCurrentRoute } = useContext(DataContext);
@@ -58,7 +57,9 @@ export const Bag = () => {
     return (
         <>
             { bag.length == 0 && 
-                <span>A lista está vazia</span>
+                <SectionFooterBottom>
+                    <h2>A lista está vazia.</h2>
+                </SectionFooterBottom>
             }
             { bag.length > 0 &&
                 <SectionBagStyled>
@@ -91,7 +92,7 @@ export const Bag = () => {
                                 <button onClick={() => setOpenForm(prev => !prev)}>Proceder e Pagar</button>
                             </DataQuantityAndPayment>
                             { openForm &&
-                                <FormPaymentComponent setOpenForm={setOpenForm} />
+                                <FormPaymentComponent setOpenForm={setOpenForm} quantity={data.reduce((el, it) => el + it.count, 0)} total={data.reduce((el, item) => el + (item.count * item.price), 0).toFixed(2)} />
                             }
                         </AsidePayment>
                     </BagItemsAndPaymentLayout>

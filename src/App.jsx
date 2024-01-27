@@ -8,6 +8,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Finished } from "./routes/finished";
 import { AllProducts } from "./routes/allProducts";
+import { NotFound } from "./routes/notFound";
 
 export const DataContext = createContext(null);
 function App() {
@@ -59,6 +60,7 @@ function App() {
             <Route path="bag" element={<Bag />} />
             <Route path="finished" element={<Finished />} />
             <Route path="products/all" element={<AllProducts />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

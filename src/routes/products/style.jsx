@@ -9,6 +9,19 @@ export const SectionStyled = styled.section`
     margin: 3em 0;
 `
 
+export const Loading = styled.div`
+    animation: load 1.4s linear infinite;
+
+    @keyframes load {
+        0% {
+            rotate: 0deg;
+        }
+        100% {
+            rotate: 360deg;
+        }
+    }
+`
+
 export const BannerProducts = styled.div`
     position: relative;
     background-color: #f6f6f6;

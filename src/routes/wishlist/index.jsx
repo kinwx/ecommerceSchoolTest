@@ -3,6 +3,7 @@ import { DataContext } from "../../App";
 import { BtnNav, ListItemsWishlist, NavigationWishlist, SectionWishlist, StyledSection } from "./style";
 import { ProductCard } from "../../components/ProductCard";
 import { divideArr } from "../../functions/divideArr";
+import { SectionFooterBottom } from "../../components/SectionFooterBottom";
 
 export const Wishlist = () => {
     const { setCurrentRoute, wishlist } = useContext(DataContext);
@@ -19,12 +20,10 @@ export const Wishlist = () => {
     }, [wishlist]);
 
     const nextSection = () => {
-        console.log(WishParts.length)
         if(wishSection < WishParts.length - 1)
             setWishSection(prev => prev + 1);
     };
     const previousSection = () => {
-        console.log(WishParts.length)
         if(wishSection != 0)
             setWishSection(prev => prev - 1);
     };
@@ -38,7 +37,9 @@ export const Wishlist = () => {
     return (
         <>
             { wishlist.length == 0 ?
-                <span>A lista está vazia.</span> :
+                <SectionFooterBottom>
+                    <h2>A lista está vazia.</h2>
+                </SectionFooterBottom> :
                 <StyledSection>
                     { WishParts.length > 0 &&
                         <ListItemsWishlist>

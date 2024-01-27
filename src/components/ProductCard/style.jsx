@@ -69,6 +69,7 @@ export const ButtonsCard = styled.div`
         color: white;
         flex: .8;
         border: none;
+        transition: .8s ease-in-out;
     }
     & > button:nth-child(2) {
         background-color: transparent;
