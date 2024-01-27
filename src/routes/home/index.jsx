@@ -243,7 +243,7 @@ export const Home = () => {
                                             );
                                         })}
                                     </div>
-                                    <span>(1.3k)</span>
+                                    <span>({currentProduct?.feedback}k)</span>
                                 </Stars>
                                 <p>
                                     {`${currentProduct?.storage} Stock Avaliable`}

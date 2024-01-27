@@ -7,7 +7,7 @@ import { DataContext } from "../../App";
 
 export const ItemBag = ({itemData, setCount, removeItem}) => {
     const { setValues, setWishlist } = useContext(DataContext);
-    const {id, image, title, description, price, count, wish} = itemData;
+    const {id, image, title, description, price, count, wish, storage, feedback} = itemData;
 
     const addWishlist = async (item) => {
         setValues(prev => {
@@ -45,9 +45,9 @@ export const ItemBag = ({itemData, setCount, removeItem}) => {
                             );
                         })}
                     </div>
-                    <span>(1.3k)</span>
+                    <span>({feedback}k)</span>
                 </Stars>
-                <p>{id == 5 ? "12 Stock Avaliable" : "43 Stock Avaliable"}</p>
+                <p>{`${storage} Stock Avaliable`}</p>
             </StarsAndQuantity>
             <PriceAndWish>
                 <Price>$ {price}</Price>

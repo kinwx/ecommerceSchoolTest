@@ -6,7 +6,7 @@ import { sleep } from "../../functions/sleep";
 
 export const ProductCard = ({itemData}) => {
     const { setBag, setWishlist, setValues } = useContext(DataContext);
-    const {id, image, title, description, price, wish} = itemData;
+    const {id, image, title, description, price, wish, feedback, storage} = itemData;
 
     const addCart = (item) => {
         setBag(prev => {
@@ -51,9 +51,9 @@ export const ProductCard = ({itemData}) => {
                             );
                         })}
                     </div>
-                    <span>(1.3k)</span>
+                    <span>({feedback}k)</span>
                 </Stars>
-                <p>{id == 5 ? "12 Stock Avaliable" : "43 Stock Avaliable"}</p>
+                <p>{`${storage} Stock Avaliable`}</p>
             </StarsAndQuantity>
             <PriceAndWish>
                 <Price>$ {price.toFixed(2)}</Price>

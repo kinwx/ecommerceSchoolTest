@@ -26,5 +26,23 @@ const list = [
 const totalCount = list.reduce((el, item) => el + item.count, 0)
 const totalPrice = list.reduce((el, item) => el + (item.price * item.count), 0) 
 
-console.log(totalCount, totalPrice);
+// console.log(totalCount, totalPrice);
+
+
+function criarArrayDeArrays(arrayOriginal, tamanhoSubarray) {
+    const novoArrayDeArrays = [];
+
+    for (let i = 0; i < arrayOriginal.length; i += tamanhoSubarray) {
+        const subarray = arrayOriginal.slice(i, i + tamanhoSubarray);
+        novoArrayDeArrays.push(subarray);
+    }
+
+    return novoArrayDeArrays;
+}
+
+const list1 = [1, 2, 3, 4, 5, 6, 8];
+const tamanhoSubarray = 3;
+const list2 = criarArrayDeArrays(list1, tamanhoSubarray);
+
+console.log(list2);
 
