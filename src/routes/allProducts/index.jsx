@@ -3,6 +3,8 @@ import { DataContext } from "../../App";
 import { BtnNav, ListItemsWishlist, NavigationWishlist, SectionWishlist, StyledSection } from "../wishlist/style";
 import { divideArr } from "../../functions/divideArr";
 import { ProductCard } from "../../components/ProductCard";
+import { SectionFooterBottom } from "../../components/SectionFooterBottom";
+import { Loading } from "../products/style";
 
 export const AllProducts = () => {
     const { values, setCurrentRoute } = useContext(DataContext);
@@ -17,6 +19,9 @@ export const AllProducts = () => {
             setProductsParts(divideArr(values, 9));
         };
     }, [values]);
+    useEffect(() => {
+        window.scroll({top: 0, behavior: 'smooth'});
+    }, [productListSection]);
 
     const nextSection = () => {
         if(productListSection < productsParts.length - 1)
@@ -36,7 +41,14 @@ export const AllProducts = () => {
     return (
         <>
             { values.length == 0 ?
-                <span>A lista está vazia.</span> :
+                <SectionFooterBottom>
+                    <Loading>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16" fill="currentColor" className="hds-flight-icon--animation-loading">
+                            <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z" opacity=".2"/>
+                            <path d="M7.25.75A.75.75 0 018 0a8 8 0 018 8 .75.75 0 01-1.5 0A6.5 6.5 0 008 1.5a.75.75 0 01-.75-.75z"/>
+                        </svg>
+                    </Loading>
+                </SectionFooterBottom> :
                 <StyledSection>
                     { productsParts.length > 0 &&
                         <ListItemsWishlist>

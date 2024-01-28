@@ -18,6 +18,9 @@ export const Wishlist = () => {
             setWishParts(divideArr(wishlist, 9));
         };
     }, [wishlist]);
+    useEffect(() => {
+        window.scroll({top: 0, behavior: 'smooth'});
+    }, [wishSection]);
 
     const nextSection = () => {
         if(wishSection < WishParts.length - 1)

@@ -11,7 +11,7 @@ export const Bag = () => {
         setCurrentRoute('Bag');
     }, []);
 
-    const [openForm, setOpenForm] = useState(false);
+    const [ openForm, setOpenForm ] = useState(false);
     
     const [ data, setData ] = useState([]);
     useEffect(() => {

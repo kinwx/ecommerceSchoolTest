@@ -24,7 +24,7 @@ function App() {
             const dtaWithFrontValues = data.map( item => {
               item.wish = false;
               item.count = 0;
-              const feedback = Math.random() * 10
+              const feedback = Math.random() * 10;
               item.feedback = feedback < 1 ? feedback.toFixed(1) : feedback.toFixed(2); 
               item.storage = ~~(Math.random() * 100);
 

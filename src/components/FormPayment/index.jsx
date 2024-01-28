@@ -7,18 +7,31 @@ export const FormPaymentComponent = ({setOpenForm, quantity, total}) => {
     const [ localData, setLocalData ] = useState({
         cep: "",
         logradouro: "",
+        numero: "",
         bairro: "",
         localidade: "",
         uf: "",
     });
+    const [ errorCep, setErrorCep ] = useState(false);
 
     const fetchCep = async () => {
         try {
             const { data } = await axios.get(`https://viacep.com.br/ws/${localData.cep}/json/`);
+            if(data.erro) 
+                return setErrorCep(prev => !prev);
+
             setLocalData(data);
+            if(errorCep)
+                setErrorCep(prev => !prev);
+            
         } catch (error) {
             console.log(error);
         };
+    };
+    const handleChange = (e) => {
+        setLocalData(prev => {
+            return {...prev, [e.target.id]: e.target.value};
+        });
     };
 
     useEffect(() => {
@@ -47,30 +60,29 @@ export const FormPaymentComponent = ({setOpenForm, quantity, total}) => {
             </button>
             <FormStyled onSubmit={finishedFunc}>
                 <div>
-                    <label htmlFor="">CEP:</label>
-                    <input type="text" placeholder="Cep" required onChange={(e) => setLocalData(prev => {
-                        return {...prev, cep: e.target.value}
-                    })} value={localData.cep}/>
+                    <label htmlFor="cep">CEP:</label>
+                    <input type="text" placeholder="Cep" required autoComplete="off" id="cep" onChange={handleChange} value={localData.cep}/>
+                    { errorCep && <span>CEP não encontrado.</span>}
                 </div>
                 <div>
-                    <label htmlFor="">Rua/Logradouro:</label>
-                    <input type="text" placeholder="Rua" required value={localData.logradouro} />
+                    <label htmlFor="rua">Rua/Logradouro:</label>
+                    <input type="text" placeholder="Rua" required autoComplete="off" id="rua" onChange={handleChange} value={localData.logradouro} />
                 </div>
                 <div>
-                    <label htmlFor="">N°:</label>
-                    <input type="text" placeholder="N°" required />
+                    <label htmlFor="numero">N°:</label>
+                    <input type="text" placeholder="N°" required autoComplete="off" id="numero" onChange={handleChange} value={localData.numero ? localData.numero : ""} />
                 </div>
                 <div>
-                    <label htmlFor="">Bairro:</label>
-                    <input type="text" placeholder="Bairro" required value={localData.bairro} />
+                    <label htmlFor="bairro">Bairro:</label>
+                    <input type="text" placeholder="Bairro" required autoComplete="off" id="bairro" onChange={handleChange} value={localData.bairro} />
                 </div>
                 <div>
-                    <label htmlFor="">Cidade:</label>
-                    <input type="text" placeholder="Cidade" required value={localData.localidade} />
+                    <label htmlFor="localidade">Cidade:</label>
+                    <input type="text" placeholder="Cidade" required autoComplete="off" id="localidade" onChange={handleChange} value={localData.localidade} />
                 </div>
                 <div>
-                    <label htmlFor="">UF:</label>
-                    <input type="text" placeholder="UF" required value={localData.uf} />
+                    <label htmlFor="uf">UF:</label>
+                    <input type="text" placeholder="UF" required autoComplete="off" id="uf" onChange={handleChange} value={localData.uf} />
                 </div>
                 <button>Enviar</button>
             </FormStyled>
