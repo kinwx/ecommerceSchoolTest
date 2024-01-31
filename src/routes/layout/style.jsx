@@ -8,6 +8,12 @@ export const MainStyled = styled.main`
     margin: 0 auto;
     /* border-left: 1px solid black;
     border-right: 1px solid black; */
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        padding: 0 .5em;
+        overflow-x: hidden;
+    }
 `
 
 export const HeaderStyled = styled.header`
@@ -21,6 +27,13 @@ export const HeaderStyled = styled.header`
 export const NavBar = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1em;
+
+
+    }
 `
 
 export const NavButtons = styled.div`
@@ -35,15 +48,23 @@ export const NavButtons = styled.div`
     display: flex;
     align-items: center;
     gap: 2.5em;
+
+    @media (max-width: 432px) {
+        flex-direction: column;
+        gap: 1.4em;
+    }
 `
 
 export const ListButtons = styled.ul`
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 2em;
 `
 
 export const ItemLink = styled.li`
+    margin: 0 auto;
+
     & a {
         text-decoration: none;
         color: ${props => props.select};
@@ -120,6 +141,8 @@ export const FooterStyled = styled.footer`
     height: auto;
     background-color: black;
     color: white;
+    width: 100vw;
+    overflow-x: hidden;
 `
 
 export const FooterInside = styled.div`
@@ -131,6 +154,15 @@ export const FooterInside = styled.div`
     display: grid;
     grid-template-columns: 8fr 1fr 1fr;
     column-gap: .5em;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        padding: 3em 2em 6em;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+        justify-items: center;
+        overflow-x: hidden;
+    }
 `
 
 export const FooterDescription = styled.div`
@@ -141,6 +173,11 @@ export const FooterDescription = styled.div`
         font-family: "Oswald", sans-serif;
         font-weight: 600;
         font-size: calc(10px + .9vmin);
+    }
+
+    @media (max-width: 1024px) {
+        grid-column: span 2;
+        text-align: center;
     }
 `
 export const FooterOptions = styled.div`

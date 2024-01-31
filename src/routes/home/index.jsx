@@ -325,10 +325,19 @@ export const Home = () => {
                 <FaqList>
                     {FaqQuest.map((label, index) => 
                         <FaqItem key={index}>
-                            <strong>{label}</strong>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
-                                <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                            </svg>
+                            <div>
+                                <strong>{label}</strong>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+                                    <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                </svg>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                                Quo, quod rerum? Sit quae necessitatibus 
+                                veniam suscipit doloremque, natus numquam! 
+                                Sunt, asperiores rem! Exercitationem sint dolore veniam 
+                                deleniti possimus temporibus quaerat.
+                            </p>
                         </FaqItem>
                     )}
                 </FaqList>

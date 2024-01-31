@@ -49,6 +49,7 @@ export const TextsInitialBanner = styled.div`
 export const ButtonsBanner = styled.div`
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
     z-index: 1;
     width: 30%;
@@ -106,12 +107,19 @@ export const TitleFeatures = styled.h3`
 export const LayoutFeaturesCards = styled.div`
     margin-top: 2em;
     display: flex;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
     gap: 1em;
     pointer-events: none;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
 export const FeatureCard = styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -120,6 +128,10 @@ export const FeatureCard = styled.div`
 
     & > p {
         color: gray;
+
+        @media (max-width: 768px) {
+            max-width: 65%;
+        }
     }
 `
 
@@ -167,7 +179,13 @@ export const MenuIcons = styled.div`
 export const PreviewProductComponent = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(505px, 1fr));
+    grid-auto-rows: 1fr;
     column-gap: .5em;
+    row-gap: 1em;
+
+    @media (max-width: 505px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 export const ImageArea = styled.div`
@@ -176,9 +194,13 @@ export const ImageArea = styled.div`
     justify-content: center;
     
     & > img {
-        width: 400px;
+        width: 20em;
         aspect-ratio: 8/8;
         object-fit: contain;
+
+        @media (max-width: 338px) {
+            width: 100%;
+        }
     }
 `
 
@@ -196,10 +218,16 @@ export const ProductLabels = styled.div`
 export const StarsAndQuantity = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     pointer-events: none;
 
     & > p {
         color: green;
+    }
+
+    @media (max-width: 346px) {
+        flex-direction: column;
+        gap: .5em;
     }
 `
 
@@ -230,11 +258,19 @@ export const BottomPosition = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1em;
+    @media (max-width: 505px) {
+        position: relative;;
+    }
 `
 
 export const ButtonArea = styled.div`
     display: flex;
     gap: 2em;
+
+    @media (max-width: 506px) {
+        flex-direction: column;
+        gap: .5em;
+    }
 `
 
 export const BtnAddBag = styled.button`
@@ -287,6 +323,11 @@ export const CarouselLayout = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 506px) {
+        flex-direction: column;
+        gap: 1em;
+    }
 `
 
 export const VisualBars = styled.div`
@@ -326,16 +367,25 @@ export const LayoutCards = styled.div`
     display: flex;
     gap: 3.2em;
     pointer-events: none;
+
+    @media (max-width: 887px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export const OpinionCard = styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: .8em;
 
     & > svg {
         color: #c0c0c0;
         margin: 1em 0;
+    }
+    @media (max-width: 887px) {
+        max-width: 70%;
     }
 `
 
@@ -346,6 +396,7 @@ export const OpinionText = styled.p`
 
 export const Profile = styled.div`
     display: flex;
+    align-items: center;
     gap: 1em;
 
     & > img {
@@ -378,14 +429,27 @@ export const FaqList = styled.div`
 `
 
 export const FaqItem = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: max-content 0fr;
+    transition: all .4s ease-in-out;
 
-    & > strong {
+    &:hover {
+        grid-template-rows: max-content 1fr;
+    }
+    & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    & > div > strong {
         font-size: calc(10px + .8vmin);
     }
-    & > svg {
+    & > div > svg {
         cursor: pointer;
+    }
+    & > p {
+        color: gray;
+        overflow: hidden;
     }
 `
