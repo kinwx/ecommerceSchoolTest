@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-// Header Navegation
+// Header Navigation
 export const MainStyled = styled.main`
     width: 1024px;
     height: auto;

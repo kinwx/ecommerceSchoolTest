@@ -107,8 +107,6 @@ export const TitleFeatures = styled.h3`
 export const LayoutFeaturesCards = styled.div`
     margin-top: 2em;
     display: flex;
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
     gap: 1em;
     pointer-events: none;
 

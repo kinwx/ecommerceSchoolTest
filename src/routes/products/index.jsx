@@ -40,13 +40,14 @@ export const Products = () => {
                 <>
                     <SectionStyled>
                         <BannerProducts>
-                            <BannerTexts>
+                            <BannerTexts id="texts">
                                 <p>
                                     Explore the Latest Trends and Unleash Your Fashionista. Your Ultimate Shopping, Destination Awaits
                                 </p>
                                 <button>Show now</button>
                             </BannerTexts>
                             <img src={girlPhoto} alt="image_girl" />
+                            <Overlay />
                         </BannerProducts>
                     </SectionStyled>      
                     <SectionStyled>

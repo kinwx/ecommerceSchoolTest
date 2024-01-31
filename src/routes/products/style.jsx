@@ -37,6 +37,18 @@ export const BannerProducts = styled.div`
         bottom: 0;
         z-index: 0;
     }
+    & > div:not(#texts) {
+        display: none;
+    }
+    @media (max-width: 869px) {
+        & > div:not(#texts) {
+            display: block;
+        }
+        & > img {
+            right: 50%;
+            transform: translateX(50%);
+        }
+    }
 `
 
 export const BannerTexts = styled.div`
@@ -66,6 +78,11 @@ export const BannerTexts = styled.div`
         width: max-content;
         cursor: pointer;
     }
+    @media (max-width: 869px) {
+        color: white;
+        align-items: center;
+        text-align: center;
+    }
 `
 
 // ============
@@ -86,6 +103,19 @@ export const TopTitle = styled.div`
 export const LayoutRecentList = styled.div`
     display: flex;
     gap: 1em;
+
+    @media (max-width: 1024px) {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 320px;
+        grid-auto-rows: 1fr;
+        column-gap: 1em;
+        overflow: scroll;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 `
 // ===============
 export const GridLayoutProduct = styled.div`
@@ -138,6 +168,31 @@ export const GridLayoutProduct = styled.div`
         grid-row: 3;
         grid-column: span 3;
         background-image: url(${jewellery});
+    }
+    @media (max-width: 812px) {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(5, 300px);
+        grid-template-rows: 1fr;
+        overflow-x: scroll;
+        height: 560px;
+
+        & > div:nth-child(2) {
+            grid-row: 1;
+            grid-column: 2;
+        }
+        & > div:nth-child(3) {
+            grid-row: 1;
+            grid-column: 3;
+        }
+        & > div:nth-child(4) {
+            grid-row: 1;
+            grid-column: 4;
+        }
+        & > div:nth-child(5) {
+            grid-row: 1;
+            grid-column: 5;
+        }
     }
 `
 

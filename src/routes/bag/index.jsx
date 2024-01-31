@@ -65,7 +65,7 @@ export const Bag = () => {
                 <SectionBagStyled>
                     <span>Bag ({data.length})</span>
                     <BagItemsAndPaymentLayout>
-                        <ItemsBagLayout>
+                        <ItemsBagLayout length={data.length}>
                             {data.map((item, index) => 
                                 <ItemBag key={index} itemData={item} setCount={setCount} removeItem={removeItem} />
                             )}

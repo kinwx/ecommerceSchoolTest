@@ -16,14 +16,32 @@ export const SectionBagStyled = styled.section`
 export const BagItemsAndPaymentLayout = styled.div`
     display: flex;
     gap: 1em;
+
+    @media (max-width: 868px) {
+        flex-direction: column;
+    }
 `
 
 export const ItemsBagLayout = styled.div`
+    --responsive-wd: ${props => props.length};
+
     flex: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1em;
     row-gap: 2em;
+
+    @media (max-width: 868px) {
+        flex: 1;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(var(--responsive-wd), 320px);
+        grid-template-rows: 1fr;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 `
 
 export const AsidePayment = styled.div`

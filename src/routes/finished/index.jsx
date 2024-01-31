@@ -18,7 +18,7 @@ export const Finished = () => {
 
     return (
         <SectionFooterBottom>
-            <h1>Compra finalizada com sucesso!</h1>
+            <h1 style={{textAlign: "center"}}>Compra finalizada com sucesso!</h1>
             <p>Você comprou {state?.quantity} {state?.quantity > 1 ? "itens" : "item"}, no valor total de $ {state?.total}</p>
         </SectionFooterBottom>      
     );

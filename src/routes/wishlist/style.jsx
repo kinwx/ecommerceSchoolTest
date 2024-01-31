@@ -7,8 +7,13 @@ export const StyledSection = styled.section`
 export const ListItemsWishlist = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(330px, 330px));
+    justify-content: center;
     column-gap: 1em;
     row-gap: 2em;
+
+    @media (max-width: 330px) {
+        grid-template-columns: 1fr;        
+    }
 `
 
 export const NavigationWishlist = styled.div`
@@ -19,6 +24,11 @@ export const NavigationWishlist = styled.div`
     border: 2px solid #ccc;
     width: max-content;
     margin: 2em auto;
+
+    @media (max-width: 468px) {
+        width: 90%;
+        flex-direction: column;
+    }
 `
 
 export const BtnNav = styled.button`
