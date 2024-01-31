@@ -28,7 +28,7 @@ Todo o UI do site tem sua referência encontrada no site da Behance:
 - [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [SVG Repo](https://www.svgrepo.com/)
 
-__*Nota*__: *O site apresente design responsivo. Com o carregamento de imagens um pouco fora do ideal (skill na qual desejo dominar mais adiante).*
+__*Nota*__: *O site apresenta design responsivo. Com o carregamento de imagens um pouco fora do ideal (skill na qual desejo dominar mais adiante).*
 
 ## Seções
 - **Home**
